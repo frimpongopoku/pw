@@ -13,9 +13,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Frimpong Opoku Agyemang – Senior Frontend Engineer",
+  title: "Mr Frimpong – Full Stack Engineer",
   description:
     "Senior Frontend Engineer specializing in Next.js, React, and delightful UI/UX.",
+  openGraph: {
+    title: "Mr Frimpong – Full Stack Engineer",
+    description:
+      "Senior Frontend Engineer specializing in Next.js, React, and delightful UI/UX.",
+    url: "https://mrfrimpong.com",
+    siteName: "Mr Frimpong",
+    images: [
+      {
+        url: "https://mrfrimpong.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Mr Frimpong – Full Stack Engineer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mr Frimpong – Full Stack Engineer",
+    description:
+      "Senior Frontend Engineer specializing in Next.js, React, and delightful UI/UX.",
+    images: ["https://mrfrimpong.com/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-32x32.png",
+  },
+  themeColor: "#ffffff",
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

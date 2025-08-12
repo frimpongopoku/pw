@@ -49,6 +49,10 @@ const fadeInUp = {
   },
 };
 
+const commonFadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
 const stagger = {
   animate: { transition: { staggerChildren: 0.08 } },
 };
@@ -102,7 +106,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
   repo,
 }) => (
-  <motion.div variants={fadeInUp} whileHover={{ y: -6 }} className="h-full">
+  <motion.div
+    variants={{
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+    }}
+    whileHover={{ y: -6 }}
+    className="h-full"
+  >
     <Card className="h-full border-border shadow-sm hover:shadow-lg transition-shadow">
       <CardHeader className="flex flex-row items-start justify-between gap-4">
         <div className="space-y-1">
@@ -157,31 +168,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
 // Main component with proper metadata for Next.js
 
-
 export default function Portfolio(): React.ReactElement {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const scrollToSection = (sectionId: string): void => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
   };
 
   const navigationItems: NavigationItem[] = [
-    { label: 'Work', id: 'work' },
-    { label: 'Expertise', id: 'expertise' },
-    { label: 'About', id: 'about' },
-    { label: 'Contact', id: 'contact' }
+    { label: "Work", id: "work" },
+    { label: "Expertise", id: "expertise" },
+    { label: "About", id: "about" },
+    { label: "Contact", id: "contact" },
   ];
 
   const techStack: string[] = [
     "Next.js",
-    "React 19",
+    "React",
     "TypeScript",
     "Tailwind CSS v4",
+    "Shadcn",
     "Radix UI",
     "Framer Motion",
     "CVA",
-    "Vitest",
     "Playwright",
     "Accessibility (a11y)",
   ];
@@ -197,11 +207,7 @@ export default function Portfolio(): React.ReactElement {
     },
     {
       title: "Performance",
-      points: [
-        "Code-splitting & RSC",
-        "Edge streaming",
-        "Lighthouse 95+",
-      ],
+      points: ["Code-splitting & RSC", "Edge streaming", "Lighthouse 95+"],
     },
     {
       title: "Animations",
@@ -265,11 +271,15 @@ export default function Portfolio(): React.ReactElement {
           <div className="flex items-center gap-3">
             <Avatar.Root className="size-9">
               <Avatar.Image src="/avatar.jpg" alt="Frimpong Opoku Agyemang" />
-              <Avatar.Fallback className="bg-muted text-muted-foreground">FOA</Avatar.Fallback>
+              <Avatar.Fallback className="bg-muted text-muted-foreground">
+                FOA
+              </Avatar.Fallback>
             </Avatar.Root>
-            <span className="font-semibold tracking-tight">Frimpong Opoku Agyemang</span>
+            <span className="font-semibold tracking-tight">
+              Frimpong Opoku Agyemang
+            </span>
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden sm:flex items-center gap-1">
             {navigationItems.map(({ label, id }) => (
@@ -290,7 +300,11 @@ export default function Portfolio(): React.ReactElement {
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+              {mobileMenuOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
             </Button>
           </div>
 
@@ -323,7 +337,10 @@ export default function Portfolio(): React.ReactElement {
                     {label}
                   </button>
                 ))}
-                <Button size="sm" className="rounded-full flex items-center gap-2 mt-2 self-start">
+                <Button
+                  size="sm"
+                  className="rounded-full flex items-center gap-2 mt-2 self-start"
+                >
                   <Download className="size-4" /> Resume
                 </Button>
               </nav>
@@ -340,12 +357,17 @@ export default function Portfolio(): React.ReactElement {
           animate="animate"
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
         >
-          <motion.div variants={fadeInUp} className="lg:col-span-7 space-y-6">
+          <motion.div
+            variants={commonFadeInUp}
+            className="lg:col-span-7 space-y-6"
+          >
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-3 py-1 text-sm text-muted-foreground">
-              <Star className="size-4" /> Available for interesting opportunities
+              <Star className="size-4" /> Available for interesting
+              opportunities
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
-              Senior Frontend Engineer crafting delightful, performant interfaces.
+              Frontend Engineer crafting delightful, performant
+              interfaces.
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
               I design and build accessible web experiences with{" "}
@@ -355,10 +377,10 @@ export default function Portfolio(): React.ReactElement {
               details, animations with intent, and shipping robust UI systems.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-full"
-                onClick={() => scrollToSection('work')}
+                onClick={() => scrollToSection("work")}
               >
                 See my work <ArrowUpRight className="size-5" />
               </Button>
@@ -366,16 +388,19 @@ export default function Portfolio(): React.ReactElement {
                 variant="outline"
                 size="lg"
                 className="rounded-full"
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection("contact")}
               >
                 <Mail className="size-5" /> Get in touch
               </Button>
               <div className="flex items-center gap-2 ml-1">
-                <SocialLink href="https://github.com/frimpongopoku" label="GitHub">
+                <SocialLink
+                  href="https://github.com/frimpongopoku"
+                  label="GitHub"
+                >
                   <Github className="size-5" />
                 </SocialLink>
                 <SocialLink
-                  href="https://linkedin.com/in/frimpong-opoku-agyemang"
+                  href="https://www.linkedin.com/in/frimpong-opoku-agyemang-298569127/"
                   label="LinkedIn"
                 >
                   <Linkedin className="size-5" />
@@ -389,7 +414,7 @@ export default function Portfolio(): React.ReactElement {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInUp} className="lg:col-span-5">
+          <motion.div variants={commonFadeInUp} className="lg:col-span-5">
             <div className="relative aspect-[4/5] w-full max-w-md mx-auto">
               <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-blue-400/25 via-fuchsia-400/20 to-emerald-400/25" />
               <motion.div
@@ -429,9 +454,9 @@ export default function Portfolio(): React.ReactElement {
               A few projects that blend UX finesse with solid engineering.
             </p>
           </div>
-          <Button asChild variant="ghost" className="rounded-full">
+          {/* <Button asChild variant="ghost" className="rounded-full">
             <Link href="/projects">View all</Link>
-          </Button>
+          </Button> */}
         </div>
         <motion.div
           variants={stagger}
@@ -486,7 +511,7 @@ export default function Portfolio(): React.ReactElement {
             {expertiseCategories.map((cat) => (
               <motion.div
                 key={cat.title}
-                variants={fadeInUp}
+                variants={commonFadeInUp}
                 className="rounded-2xl border border-border p-6 bg-background/60 backdrop-blur"
               >
                 <h3 className="text-lg font-semibold mb-3">{cat.title}</h3>
@@ -566,8 +591,9 @@ export default function Portfolio(): React.ReactElement {
           <div className="mt-6 flex items-center justify-center gap-3">
             <Button asChild size="lg" className="rounded-full">
               <a
-                href="mailto:frimpong@yourdomain.com"
+                href="mailto:message@mrfrimpong.com"
                 className="inline-flex items-center gap-2"
+                target="_blank"
               >
                 <Mail className="size-5" /> Email me
               </a>
@@ -579,7 +605,7 @@ export default function Portfolio(): React.ReactElement {
               className="rounded-full"
             >
               <Link
-                href="https://cal.com/frimpongopoku"
+                href="https://calendly.com/mrfrimpong"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
@@ -594,7 +620,10 @@ export default function Portfolio(): React.ReactElement {
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <Section className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Frimpong Opoku Agyemang. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Frimpong Opoku Agyemang. All rights
+            reserved.
+          </p>
           <div className="flex items-center gap-3">
             <Link href="/imprint" className="hover:text-foreground">
               Imprint
