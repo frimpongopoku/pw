@@ -1,0 +1,126 @@
+/* ========== Design Tokens ========== */
+
+/* Base neutrals (semantic) */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* neutrals */
+  --bg: oklch(1 0 0);                 /* surface background */
+  --panel: color-mix(in oklab, var(--bg) 90%, black 10%);
+  --surface: color-mix(in oklab, var(--bg) 92%, black 8%);
+  --fg: oklch(0.15 0 0);
+  --muted-fg: oklch(0.45 0 0);
+  --border: color-mix(in oklab, var(--fg) 15%, var(--bg) 85%);
+  --ring: color-mix(in oklab, var(--fg) 20%, transparent 80%);
+
+  /* shadows */
+  --shadow-elev-1: 0 4px 22px rgba(0,0,0,0.06);
+  --shadow-elev-2: 0 8px 30px rgba(0,0,0,0.10);
+
+  /* Default brand fallbacks; will be overridden by data-accent */
+  --brand: #14b8a6;         /* teal */
+  --brand-2: #f43f5e;       /* coral (rose) */
+  --brand-contrast: white;
+
+  /* Gradients and special surfaces */
+  --gradient-brand: linear-gradient(90deg, var(--brand), var(--brand-2));
+  --gradient-hero: linear-gradient(135deg, color-mix(in oklab, var(--brand) 30%, transparent), color-mix(in oklab, var(--brand-2) 25%, transparent));
+
+  /* Page background (layered) */
+  --app-bg: radial-gradient(1200px 600px at 8% -10%, color-mix(in oklab, var(--brand) 18%, transparent), transparent),
+            radial-gradient(1200px 600px at 92% -10%, color-mix(in oklab, var(--brand-2) 14%, transparent), transparent),
+            linear-gradient(to bottom, var(--bg), color-mix(in oklab, var(--bg) 85%, transparent));
+
+  /* Orbs */
+  --orb-1: radial-gradient(700px 350px at 15% 8%, color-mix(in oklab, var(--brand) 16%, transparent), transparent 60%);
+  --orb-2: radial-gradient(700px 350px at 85% 8%, color-mix(in oklab, var(--brand-2) 14%, transparent), transparent 60%);
+  --orb-3: radial-gradient(900px 450px at 50% 92%, color-mix(in oklab, var(--brand) 8%, transparent), transparent 60%);
+}
+
+/* Dark theme neutrals */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: oklch(0.15 0 0);
+  --panel: color-mix(in oklab, var(--bg) 92%, white 8%);
+  --surface: color-mix(in oklab, var(--bg) 88%, white 12%);
+  --fg: oklch(0.98 0 0);
+  --muted-fg: oklch(0.75 0 0);
+  --border: color-mix(in oklab, var(--fg) 18%, var(--bg) 82%);
+  --ring: color-mix(in oklab, var(--fg) 30%, transparent 70%);
+  --shadow-elev-1: 0 4px 22px rgba(0,0,0,0.40);
+  --shadow-elev-2: 0 8px 30px rgba(0,0,0,0.55);
+}
+
+/* ===== Palettes (swap by data-accent) ===== */
+
+/* Teal + Coral (default) */
+:root,
+:root[data-accent="teal-coral"] {
+  --brand: #14b8a6;
+  --brand-2: #f43f5e;
+  --brand-contrast: white;
+  --gradient-brand: linear-gradient(90deg, #14b8a6, #f43f5e);
+}
+
+/* Mint + Indigo */
+:root[data-accent="mint-indigo"] {
+  --brand: #34d399;   /* mint */
+  --brand-2: #6366f1; /* indigo */
+  --brand-contrast: white;
+  --gradient-brand: linear-gradient(90deg, #34d399, #6366f1);
+}
+
+/* Blue + Purple */
+:root[data-accent="blue-purple"] {
+  --brand: #3b82f6;   /* blue */
+  --brand-2: #8b5cf6; /* purple */
+  --brand-contrast: white;
+  --gradient-brand: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+/* Orange + Rose */
+:root[data-accent="orange-rose"] {
+  --brand: #fb923c;   /* orange-400 */
+  --brand-2: #fb7185; /* rose-400 */
+  --brand-contrast: oklch(0.12 0 0);
+  --gradient-brand: linear-gradient(90deg, #fb923c, #fb7185);
+}
+
+/* ===== Reusable “glass” helpers ===== */
+.glass {
+  background: color-mix(in oklab, var(--surface) 100%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elev-1);
+}
+
+.glass-hover:hover {
+  box-shadow: var(--shadow-elev-2);
+}
+
+.btn-primary {
+  color: var(--brand-contrast);
+  background-image: var(--gradient-brand);
+  border: 1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--brand) 20%, transparent);
+}
+
+.btn-outline {
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid color-mix(in oklab, var(--brand) 35%, var(--border) 65%);
+}
+
+.chip {
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(4px);
+}
+
+
+.border-token { border-color: var(--border); }
+.text-muted-token { color: var(--muted-fg); }
+.text-fg-token { color: var(--fg); }
+.bg-surface-token { background: var(--surface); }
+.bg-panel-token { background: var(--panel); }
