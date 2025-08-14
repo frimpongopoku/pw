@@ -259,6 +259,32 @@ export default function Portfolio(): React.ReactElement {
     { kpi: "20%", label: "Bundle size reduction" },
   ];
 
+  const selectedWork = [
+    {
+      title: "Pidaso Ghana",
+      description:
+        "High-performance payroll management software with Next.js App Router, and streaming UI.",
+      tags: ["Next.js", "Edge", "Charts", "Zustand"],
+      href: "https://your-demo-url.com/dashboard",
+      // repo: "https://github.com/frimpongopoku/realtime-dashboard",
+    },
+    {
+      title: "Testewb Platform",
+      description:
+        "A headless, accessible component toolkit layered with Radix UI + Tailwind tokens.",
+      tags: ["Design Tokens", "Radix", "CVA", "Charts"],
+      href: "https://your-demo-url.com/design-system",
+      // repo: "https://github.com/frimpongopoku/design-system",
+    },
+    {
+      title: "Koko UI Kit",
+      description:
+        "A headless, accessible component toolkit layered with Radix UI + Tailwind tokens.",
+      tags: ["Shadcn", "Tailwind", "Radix"],
+      href: "https://your-demo-url.com/3d-explorer",
+      repo: "https://github.com/frimpongopoku/3d-explorer",
+    },
+  ];
   return (
     <main
       className="relative min-h-screen overflow-clip"
@@ -339,7 +365,7 @@ export default function Portfolio(): React.ReactElement {
             <Button
               size="sm"
               onClick={toggleTheme}
-              className="rounded-full chip"
+              className="rounded-full text-fg-token cursor-pointer hover:bg-gray-50 chip"
               aria-label="Toggle theme"
               title="Toggle theme"
             >
@@ -472,7 +498,7 @@ export default function Portfolio(): React.ReactElement {
                   color: "transparent",
                 }}
               >
-                Frontend Engineer
+                Senior Frontend Engineer
               </span>{" "}
               crafting delightful, performant interfaces.
             </h1>
@@ -596,27 +622,9 @@ export default function Portfolio(): React.ReactElement {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
         >
-          <ProjectCard
-            title="Realtime Dashboard"
-            description="High-performance analytics with Next.js App Router, server actions, and streaming UI."
-            tags={["Next.js", "Edge", "Charts", "WebSockets"]}
-            href="https://your-demo-url.com/dashboard"
-            repo="https://github.com/frimpongopoku/realtime-dashboard"
-          />
-          <ProjectCard
-            title="Design System"
-            description="A headless, accessible component toolkit layered with Radix UI + Tailwind tokens."
-            tags={["Design Tokens", "Radix", "CVA", "Docs"]}
-            href="https://your-demo-url.com/design-system"
-            repo="https://github.com/frimpongopoku/design-system"
-          />
-          <ProjectCard
-            title="3D Product Explorer"
-            description="WebGL + React for immersive product tours with delightful motion."
-            tags={["React", "Three.js", "Framer Motion"]}
-            href="https://your-demo-url.com/3d-explorer"
-            repo="https://github.com/frimpongopoku/3d-explorer"
-          />
+          {selectedWork.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
         </motion.div>
       </Section>
 
@@ -714,7 +722,7 @@ export default function Portfolio(): React.ReactElement {
                     "Collaborate with design",
                     "Measure with data",
                   ].map((s) => (
-                    <Badge key={s} className="rounded-full chip">
+                    <Badge key={s} className="rounded-full text-fg-token chip">
                       {s}
                     </Badge>
                   ))}
@@ -826,19 +834,19 @@ export default function Portfolio(): React.ReactElement {
         className="py-8 border-t"
         style={{ borderColor: "var(--border)" }}
       >
-        <Section className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-token">
+        <Section className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-muted-token">
           <p>
             © {new Date().getFullYear()} Frimpong Opoku Agyemang. All rights
             reserved.
           </p>
           <div className="flex items-center gap-3">
-            <Link href="/imprint" className="hover:underline">
+            {/* <Link href="/imprint" className="hover:underline">
               Imprint
             </Link>
             <span aria-hidden>·</span>
             <Link href="/privacy" className="hover:underline">
               Privacy
-            </Link>
+            </Link> */}
           </div>
         </Section>
       </footer>

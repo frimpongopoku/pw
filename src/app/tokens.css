@@ -8,7 +8,8 @@
   /* neutrals */
   --bg: oklch(1 0 0);                 /* surface background */
   --panel: color-mix(in oklab, var(--bg) 90%, black 10%);
-  --surface: color-mix(in oklab, var(--bg) 92%, black 8%);
+  --surface: color-mix(in oklab, var(--bg) 92%, rgb(197, 197, 197) 8%);
+  /* --surface: white; */
   --fg: oklch(0.15 0 0);
   --muted-fg: oklch(0.45 0 0);
   --border: color-mix(in oklab, var(--fg) 15%, var(--bg) 85%);
