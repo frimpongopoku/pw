@@ -36,6 +36,7 @@ import {
   SocialLinkProps,
   TechBadgeProps,
 } from "./types";
+import Image from "next/image";
 
 /* ------- Motion ------- */
 const commonFadeInUp = {
@@ -269,7 +270,7 @@ export default function Portfolio(): React.ReactElement {
       // repo: "https://github.com/frimpongopoku/realtime-dashboard",
     },
     {
-      title: "Testewb Platform",
+      title: "Testewb",
       description:
         "A headless, accessible component toolkit layered with Radix UI + Tailwind tokens.",
       tags: ["Design Tokens", "Radix", "CVA", "Charts"],
@@ -483,7 +484,7 @@ export default function Portfolio(): React.ReactElement {
             variants={commonFadeInUp}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm chip">
+            <div className="inline-flex items-center transition-all animate-bounce gap-2 rounded-full px-3 py-1 text-sm chip">
               <Star className="size-4" style={{ color: "var(--brand)" }} />{" "}
               Available for interesting opportunities
             </div>
@@ -577,7 +578,14 @@ export default function Portfolio(): React.ReactElement {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="h-full w-full rounded-[1.6rem] grid place-items-center">
-                  <div className="text-center p-6">
+                  <Image
+                    height={800}
+                    width={800}
+                    src="/me.png"
+                    alt="Frimpong Opoku Agyemang"
+                    className=" w-[100%] h-[100%] rounded-[1.6rem] object-cover"
+                  />
+                  {/* <div className="text-center p-6">
                     <p className="text-sm uppercase tracking-widest text-muted-token">
                       Showcase
                     </p>
@@ -595,7 +603,7 @@ export default function Portfolio(): React.ReactElement {
                       Thoughtful micro-interactions, accessible patterns, and
                       clean architecture.
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             </div>
