@@ -272,7 +272,7 @@ export default function Portfolio(): React.ReactElement {
     {
       title: "Testewb",
       description:
-        "A headless, accessible component toolkit layered with Radix UI + Tailwind tokens.",
+        "A clean modern platform for hosting bug-bash sessions and gathering feedback.",
       tags: ["Design Tokens", "Radix", "CVA", "Charts"],
       href: "https://your-demo-url.com/design-system",
       // repo: "https://github.com/frimpongopoku/design-system",
