@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,11 +84,11 @@ const productSans = localFont({
 export const metadata = {
   title: "Mr Frimpong – Full Stack Engineer",
   description:
-    "Full Stack Engineer specializing in Nest, Next.js, React and delightful UI/UX.",
+    "AI-Enabled Full Stack Engineer specializing in NestJs, Next.js, React and delightful UI/UX.",
   openGraph: {
     title: "Mr Frimpong – Full Stack Engineer",
     description:
-      "Full Stack Engineer specializing in Nest, Next.js, React, and delightful UI/UX.",
+      "AI-Enabled Full Stack Engineer specializing in NestJs, Next.js, React, and delightful UI/UX.",
     url: "https://mrfrimpong.com",
     siteName: "Mr Frimpong",
     images: [
@@ -113,7 +114,7 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon-32x32.png",
   },
-  themeColor: "#ffffff",
+
   manifest: "/site.webmanifest",
 };
 
@@ -123,11 +124,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${productSans.variable}  antialiased`}
-      >
-        {children}
+    <html data-accent="orange-rose" lang="en">
+      <body className={`${productSans.variable}  antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+          disableTransitionOnChange={false}
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

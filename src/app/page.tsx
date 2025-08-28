@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import * as Avatar from "@radix-ui/react-avatar";
@@ -25,6 +25,7 @@ import {
   X,
   Sun,
   Moon,
+  Bot,
 } from "lucide-react";
 import {
   BlurOrbProps,
@@ -37,6 +38,7 @@ import {
   TechBadgeProps,
 } from "./types";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 /* ------- Motion ------- */
 const commonFadeInUp = {
@@ -172,11 +174,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 /* ------- Main ------- */
 export default function Portfolio(): React.ReactElement {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const [theme, setTheme] = useState<"light" | "dark">(
-    (typeof window !== "undefined" &&
-      (document.documentElement.getAttribute("data-theme") as any)) ||
-      "light"
-  );
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  // const [theme, setTheme] = useState<"light" | "dark">("dark");
+  // console.log("Resolved theme:", resolvedTheme);
+  // const [theme, setTheme] = useState<"light" | "dark">(
+  //   (typeof window !== "undefined" &&
+  //     (document.documentElement.getAttribute("data-theme") as any)) ||
+  //     "light"
+  // );
 
   const scrollToSection = (sectionId: string): void => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
@@ -233,11 +238,12 @@ export default function Portfolio(): React.ReactElement {
       points: ["Code-splitting & RSC", "Edge streaming", "Lighthouse 95+"],
     },
     {
-      title: "Animations",
+      title: "Backend Design",
       points: [
-        "Micro-interactions",
-        "Motion with purpose",
-        "Reduced motion support",
+        "SQL Databases (PostgreSQL, MySQL)",
+        "NoSQL Databases(MongoDB, Redis)",
+        "Resful API Design & Implementation",
+        "Third party API Integration Experience",
       ],
     },
     {
@@ -266,26 +272,41 @@ export default function Portfolio(): React.ReactElement {
       description:
         "High-performance payroll management software with Next.js App Router, and streaming UI.",
       tags: ["Next.js", "Edge", "Charts", "Zustand"],
-      href: "https://your-demo-url.com/dashboard",
+      href: "https://pidaso.com",
       // repo: "https://github.com/frimpongopoku/realtime-dashboard",
     },
     {
       title: "Testewb",
       description:
         "A clean modern platform for hosting bug-bash sessions and gathering feedback.",
-      tags: ["Design Tokens", "Radix", "CVA", "Charts"],
-      href: "https://your-demo-url.com/design-system",
+      tags: [
+        "Design Tokens",
+        "Radix",
+        "CVA",
+        "Firebase",
+        "Render",
+        "Github API",
+        "Shadcn",
+      ],
+      href: "https://testewb.com",
       // repo: "https://github.com/frimpongopoku/design-system",
     },
     {
-      title: "Koko UI Kit",
+      title: "Massenergize Platform",
       description:
-        "A headless, accessible component toolkit layered with Radix UI + Tailwind tokens.",
-      tags: ["Shadcn", "Tailwind", "Radix"],
+        "An open-source platform for managing community energy projects.",
+      tags: ["React", "Django", "Carbon Calculataor"],
       href: "https://your-demo-url.com/3d-explorer",
       repo: "https://github.com/frimpongopoku/3d-explorer",
     },
   ];
+
+  useEffect(() => {
+    setTheme(resolvedTheme === "dark" ? "dark" : "light");
+    if (window !== undefined) {
+      document.documentElement.setAttribute("data-theme", resolvedTheme!);
+    }
+  }, [resolvedTheme]);
   return (
     <main
       className="relative min-h-screen overflow-clip"
@@ -488,6 +509,10 @@ export default function Portfolio(): React.ReactElement {
               <Star className="size-4" style={{ color: "var(--brand)" }} />{" "}
               Available for interesting opportunities
             </div>
+            <div className="inline-flex mx-1 items-center transition-all animate-bounce gap-2 rounded-full px-3 py-1 text-sm chip">
+              <Bot className="size-4" style={{ color: "var(--brand)" }} />{" "}
+              Expert in AI-assisted development
+            </div>
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]"
               style={{ color: "var(--fg)" }}
@@ -499,17 +524,19 @@ export default function Portfolio(): React.ReactElement {
                   color: "transparent",
                 }}
               >
-                Senior Frontend Engineer
+                Full Stack Engineer
               </span>{" "}
-              crafting delightful, performant interfaces.
+              crafting delightful, performant web applications.
             </h1>
             <p className="text-base sm:text-lg leading-relaxed max-w-2xl text-muted-token">
               I design and build accessible web experiences with{" "}
-              <span className="font-semibold text-fg-token">Next.js</span>,{" "}
-              <span className="font-semibold text-fg-token">React</span>, and{" "}
-              <span className="font-semibold text-fg-token">TypeScript</span>. I
-              obsess over details, animations with intent, and shipping robust
-              UI systems.
+              <span className="font-semibold text-fg-token">NestJS</span> +{" "}
+              <span className="font-semibold text-fg-token">Next.js</span>{" "}
+              <span className="font-semibold text-fg-token">
+                TypeScript (Stack)
+              </span>
+              . I obsess over details, animations with intent, and shipping
+              robust production-ready applications.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Button
@@ -567,7 +594,7 @@ export default function Portfolio(): React.ReactElement {
                 style={{ backgroundImage: "var(--gradient-hero)" }}
               />
               <motion.div
-                className="absolute inset-2 rounded-[1.8rem] shadow"
+                className="absolute inset-2 group rounded-[1.8rem] shadow"
                 style={{
                   background: "var(--surface)",
                   border: "1px solid var(--border)",
@@ -581,10 +608,12 @@ export default function Portfolio(): React.ReactElement {
                   <Image
                     height={800}
                     width={800}
+                    priority={false}
                     src="/me.png"
                     alt="Frimpong Opoku Agyemang"
                     className=" w-[100%] h-[100%] rounded-[1.6rem] object-cover"
                   />
+
                   {/* <div className="text-center p-6">
                     <p className="text-sm uppercase tracking-widest text-muted-token">
                       Showcase
@@ -604,6 +633,9 @@ export default function Portfolio(): React.ReactElement {
                       clean architecture.
                     </p>
                   </div> */}
+                </div>
+                <div className="w-full text-center hidden animate-in group-hover:block my-2">
+                  <small>Yhup, that's me! Smiling is my default</small>
                 </div>
               </motion.div>
             </div>
@@ -673,11 +705,12 @@ export default function Portfolio(): React.ReactElement {
                 ],
               },
               {
-                title: "Animations",
+                title: "Backend Design",
                 points: [
-                  "Micro-interactions",
-                  "Motion with purpose",
-                  "Reduced motion support",
+                  "SQL Databases (PostgreSQL, MySQL)",
+                  "NoSQL Databases(MongoDB, Redis)",
+                  "Resful API Design & Implementation",
+                  "Third party API Integration Experience",
                 ],
               },
               {
