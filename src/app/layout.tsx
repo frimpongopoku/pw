@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,14 +13,81 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const productSans = localFont({
+  src: [
+    {
+      path: "../font/ProductSans-Thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../font/ProductSans-ThinItalic.woff2",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../font/ProductSans-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../font/ProductSans-LightItalic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../font/ProductSans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../font/ProductSans-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../font/ProductSans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../font/ProductSans-MediumItalic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../font/ProductSans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../font/ProductSans-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../font/ProductSans-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../font/ProductSans-BlackItalic.woff2",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--product-sans",
+  display: "swap",
+});
+
 export const metadata = {
   title: "Mr Frimpong – Full Stack Engineer",
   description:
-    "Senior Frontend Engineer specializing in Next.js, React, and delightful UI/UX.",
+    "Full Stack Engineer specializing in Nest, Next.js, React and delightful UI/UX.",
   openGraph: {
     title: "Mr Frimpong – Full Stack Engineer",
     description:
-      "Senior Frontend Engineer specializing in Next.js, React, and delightful UI/UX.",
+      "Full Stack Engineer specializing in Nest, Next.js, React, and delightful UI/UX.",
     url: "https://mrfrimpong.com",
     siteName: "Mr Frimpong",
     images: [
@@ -37,7 +105,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Mr Frimpong – Full Stack Engineer",
     description:
-      "Senior Frontend Engineer specializing in Next.js, React, and delightful UI/UX.",
+      "Full Stack Engineer specializing in Next.js, React, and delightful UI/UX.",
     images: ["https://mrfrimpong.com/og-image.png"],
   },
   icons: {
@@ -57,7 +125,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${productSans.variable}  antialiased`}
       >
         {children}
       </body>
