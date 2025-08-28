@@ -40,6 +40,7 @@ export interface ProjectCardProps {
   tags: string[];
   href: string;
   repo?: string;
+  contribution_url?: string;
 }
 
 export interface NavigationItem {

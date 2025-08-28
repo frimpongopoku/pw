@@ -102,6 +102,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   tags,
   href,
+  contribution_url,
   repo,
 }) => (
   <motion.div
@@ -113,10 +114,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <Card className="h-full bg-transparent border-0 shadow-none">
         <CardHeader className="flex flex-row items-start justify-between gap-4">
           <div className="space-y-1">
-            <h3 className="text-xl font-semibold tracking-tight text-fg-token">
-              {title}
-            </h3>
-            <p className="text-sm leading-relaxed text-muted-token">
+            <Link
+              href={href || "#"}
+              target="_blank"
+              className=""
+              rel="noopener noreferrer"
+            >
+              <h3 className="text-xl hover:underline inline-flex items-center gap-1 cursor-pointer font-semibold tracking-tight text-fg-token">
+                {title} <ExternalLink className="size-4 inline" />
+              </h3>
+            </Link>
+            <p className="text-sm mt-1 leading-relaxed text-muted-token">
               {description}
             </p>
           </div>
@@ -138,17 +146,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ))}
         </CardContent>
         <CardFooter className="flex items-center justify-between gap-2">
-          <Button asChild className="rounded-full btn-primary">
-            <Link
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
+          {/* <Button asChild className="rounded-full btn-primary">
+              <Link
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2"
+              >
+                <Globe className="size-4" /> Demo{" "}
+                <ExternalLink className="size-4" />
+              </Link>
+            </Button> */}
+          {contribution_url ? (
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full btn-primary"
             >
-              <Globe className="size-4" /> Live Demo{" "}
-              <ExternalLink className="size-4" />
-            </Link>
-          </Button>
+              <Link
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2"
+              >
+                My Contribution <ExternalLink className="size-4" />
+              </Link>
+            </Button>
+          ) : null}
+
           {repo && (
             <Button
               asChild
@@ -271,7 +296,15 @@ export default function Portfolio(): React.ReactElement {
       title: "Pidaso Ghana",
       description:
         "High-performance payroll management software with Next.js App Router, and streaming UI.",
-      tags: ["Next.js", "Edge", "Charts", "Zustand"],
+      tags: [
+        "Next.js",
+        "Edge",
+        "Charts",
+        "Zustand",
+        "TanstackQuery",
+        "Shadcn",
+        "RadixUI",
+      ],
       href: "https://pidaso.com",
       // repo: "https://github.com/frimpongopoku/realtime-dashboard",
     },
@@ -287,24 +320,31 @@ export default function Portfolio(): React.ReactElement {
         "Render",
         "Github API",
         "Shadcn",
+        "TanstackQuery",
+        "React Data Tables",
       ],
       href: "https://testewb.com",
       // repo: "https://github.com/frimpongopoku/design-system",
     },
     {
-      title: "Massenergize Platform",
+      title: "Massenergize",
       description:
         "An open-source platform for managing community energy projects.",
-      tags: ["React", "Django", "Carbon Calculataor"],
+      tags: ["React", "Django", "Carbon Calculator", "Redux", "PostgreSQL"],
       href: "https://your-demo-url.com/3d-explorer",
       repo: "https://github.com/frimpongopoku/3d-explorer",
     },
   ];
 
   useEffect(() => {
-    setTheme(resolvedTheme === "dark" ? "dark" : "light");
+    const isDark = resolvedTheme === "dark";
+    setTheme(isDark ? "dark" : "light");
     if (window !== undefined) {
       document.documentElement.setAttribute("data-theme", resolvedTheme!);
+      document.documentElement.setAttribute(
+        "data-accent",
+        isDark ? "orange-rose" : "teal-coral"
+      );
     }
   }, [resolvedTheme]);
   return (
@@ -535,8 +575,9 @@ export default function Portfolio(): React.ReactElement {
               <span className="font-semibold text-fg-token">
                 TypeScript (Stack)
               </span>
-              . I obsess over details, animations with intent, and shipping
-              robust production-ready applications.
+              . I focus on crafting robust, production-ready solutions, from
+              architecting secure backend APIs to delivering polished,
+              user-friendly frontends.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Button
@@ -572,15 +613,15 @@ export default function Portfolio(): React.ReactElement {
             <div className="flex flex-wrap gap-2 pt-2">
               {[
                 "Next.js",
-                "React",
+                "NestJS",
+                "React(SPA)",
                 "TypeScript",
                 "Tailwind CSS v4",
                 "Shadcn",
                 "Radix UI",
                 "Framer Motion",
-                "CVA",
-                "Playwright",
-                "Accessibility (a11y)",
+                "TanstackQuery",
+                "Redux",
               ].map((label) => (
                 <TechBadge key={label} label={label} />
               ))}
@@ -634,6 +675,7 @@ export default function Portfolio(): React.ReactElement {
                     </p>
                   </div> */}
                 </div>
+
                 <div className="w-full text-center hidden animate-in group-hover:block my-2">
                   <small>Yhup, that's me! Smiling is my default</small>
                 </div>
@@ -676,8 +718,9 @@ export default function Portfolio(): React.ReactElement {
               Expertise
             </h2>
             <p className="text-muted-token">
-              From design systems to data-heavy dashboards, I build interfaces
-              that feel effortless.
+              From design systems to data-heavy dashboards, I build end-to-end
+              web applications — crafting intuitive interfaces while
+              architecting the backend services and APIs that power them.
             </p>
           </div>
           <motion.div
@@ -750,7 +793,7 @@ export default function Portfolio(): React.ReactElement {
                 </h2>
                 <p className="text-muted-token mt-3 leading-relaxed">
                   Over the past{" "}
-                  <span className="font-medium text-fg-token">6 years</span>,
+                  <span className="font-medium text-fg-token">5 years</span>,
                   I've built products across SaaS, e-commerce, and developer
                   tools. I thrive at the intersection of design and engineering:
                   building systems, shipping features, and mentoring teams.
@@ -816,9 +859,9 @@ export default function Portfolio(): React.ReactElement {
               Let's build something great
             </h2>
             <p className="text-muted-token mt-3 max-w-2xl mx-auto">
-              I'm currently exploring senior/principal roles and consulting
-              opportunities. If you have an interesting problem, I'd love to
-              hear about it.
+              I'm currently exploring more stable roles. If you have an
+              interesting problem, I'd love to hear about it. Feel free to reach
+              out via any of the channels below!
             </p>
             <div className="mt-6 flex items-center justify-center gap-3">
               <Button asChild size="lg" className="rounded-full btn-primary">
@@ -848,7 +891,7 @@ export default function Portfolio(): React.ReactElement {
             </div>
 
             {/* Accent pickers (desktop) */}
-            <div className="mt-8 hidden sm:flex items-center justify-center gap-2">
+            {/* <div className="mt-8 hidden sm:flex items-center justify-center gap-2">
               {[
                 ["teal-coral", "Teal+Coral"],
                 ["mint-indigo", "Mint+Indigo"],
@@ -865,7 +908,7 @@ export default function Portfolio(): React.ReactElement {
                   {label}
                 </button>
               ))}
-            </div>
+            </div> */}
           </div>
         </SoftCard>
       </Section>
