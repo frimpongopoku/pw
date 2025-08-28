@@ -921,7 +921,13 @@ export default function Portfolio(): React.ReactElement {
         <Section className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-muted-token">
           <p>
             © {new Date().getFullYear()} Frimpong Opoku Agyemang. All rights
-            reserved.
+            reserved.{" "}
+            <Link
+              className="cursor-pointer hover:opacity-80 underline font-semibold text-primary"
+              href="mailto:message@mrfimpong.com"
+            >
+              <span>message@mrfrimpong.com</span>
+            </Link>
           </p>
           <div className="flex items-center gap-3">
             {/* <Link href="/imprint" className="hover:underline">
