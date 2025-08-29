@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack --port 4006",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npm rebuild lightningcss || true"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -32,5 +33,11 @@
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.6",
     "typescript": "^5"
+  },
+  "overrides": {
+    "lightningcss": "1.25.1"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
