@@ -497,7 +497,7 @@ export default function Portfolio(): React.ReactElement {
                   <Button
                     size="sm"
                     onClick={toggleTheme}
-                    className="rounded-full chip"
+                    className="rounded-full dark:text-white/80 text-gray-500 chip"
                   >
                     {theme === "light" ? (
                       <Moon className="size-4" />
@@ -506,13 +506,20 @@ export default function Portfolio(): React.ReactElement {
                     )}
                   </Button>
                   <Button size="sm" className="rounded-full btn-primary">
-                    <Download className="size-4" /> Resume
+                    <Link
+                      href="/resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2"
+                    >
+                      <Download className="size-4" /> Resume
+                    </Link>
                   </Button>
                 </div>
               </nav>
 
               {/* Accent pickers */}
-              <div className="mt-4 flex flex-wrap gap-2">
+              {/* <div className="mt-4 flex flex-wrap gap-2">
                 {[
                   ["teal-coral", "Teal+Coral"],
                   ["mint-indigo", "Mint+Indigo"],
@@ -527,7 +534,7 @@ export default function Portfolio(): React.ReactElement {
                     {label}
                   </button>
                 ))}
-              </div>
+              </div> */}
             </Section>
           </div>
         )}
