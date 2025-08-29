@@ -331,8 +331,8 @@ export default function Portfolio(): React.ReactElement {
       description:
         "An open-source platform for managing community energy projects.",
       tags: ["React", "Django", "Carbon Calculator", "Redux", "PostgreSQL"],
-      href: "https://your-demo-url.com/3d-explorer",
-      repo: "https://github.com/frimpongopoku/3d-explorer",
+      href: "https://communities.massenergize.org/",
+      repo: "https://github.com/massenergize",
     },
   ];
 
