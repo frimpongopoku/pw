@@ -38,6 +38,6 @@
     "lightningcss": "1.25.1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   }
 }
