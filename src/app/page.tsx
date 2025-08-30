@@ -218,6 +218,10 @@ export default function Portfolio(): React.ReactElement {
     setTheme(next);
     if (typeof window !== "undefined") {
       document.documentElement.setAttribute("data-theme", next);
+      document.documentElement.setAttribute(
+        "data-accent",
+        next === "dark" ? "orange-rose" : "teal-coral"
+      );
     }
   };
 
