@@ -1,0 +1,25 @@
+---
+title: "Scaling UI Systems Without Chaos"
+date: "2026-04-27"
+description: "A practical approach to scaling component libraries while staying flexible."
+tags: ["design-system", "react", "architecture"]
+published: true
+---
+
+Most UI systems fail when they optimize for consistency and forget adaptability.
+
+I prefer a composable approach:
+
+## Clear primitives
+
+Buttons, cards, and badges should be intentionally small, style-safe primitives.
+
+## Smart composition
+
+Feature components should compose primitives with local context, rather than adding one-off variants globally.
+
+## Tokenized customization
+
+Color, spacing, and elevation should be controlled by design tokens. This keeps rebrands and theme work fast.
+
+When teams follow this model, product velocity stays high and visual quality remains coherent.

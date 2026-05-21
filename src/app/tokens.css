@@ -91,7 +91,6 @@
 /* ===== Reusable “glass” helpers ===== */
 .glass {
   background: color-mix(in oklab, var(--surface) 100%, transparent);
-  backdrop-filter: blur(6px);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-elev-1);
 }
@@ -116,7 +115,6 @@
 .chip {
   background: color-mix(in oklab, var(--surface) 70%, transparent);
   border: 1px solid var(--border);
-  backdrop-filter: blur(4px);
 }
 
 
