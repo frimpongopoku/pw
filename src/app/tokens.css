@@ -2,7 +2,8 @@
 
 /* Base neutrals (semantic) */
 :root,
-:root[data-theme="light"] {
+:root[data-theme="light"],
+:root.light {
   color-scheme: light;
 
   /* neutrals */
@@ -40,7 +41,8 @@
 }
 
 /* Dark theme neutrals */
-:root[data-theme="dark"] {
+:root[data-theme="dark"],
+:root.dark {
   color-scheme: dark;
   --bg: oklch(0.15 0 0);
   --panel: color-mix(in oklab, var(--bg) 92%, white 8%);

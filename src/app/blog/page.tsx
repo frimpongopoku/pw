@@ -26,13 +26,21 @@ export default function BlogPage() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-sm"
-          >
-            <ArrowLeft className="size-4" />
-            Back to home
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-sm"
+            >
+              <ArrowLeft className="size-4" />
+              Career tracks
+            </Link>
+            <Link
+              href="/frontend"
+              className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-sm"
+            >
+              Frontend portfolio
+            </Link>
+          </div>
           <h1 className="mt-6 text-4xl sm:text-5xl font-black tracking-tight text-fg-token">
             Writing
           </h1>

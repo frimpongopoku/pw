@@ -63,13 +63,21 @@ export default async function PostPage({ params }: PostPageProps) {
       style={{ background: "var(--app-bg)", color: "var(--fg)" }}
     >
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-sm"
-        >
-          <ArrowLeft className="size-4" />
-          Back to writing
-        </Link>
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-sm"
+          >
+            <ArrowLeft className="size-4" />
+            Back to writing
+          </Link>
+          <Link
+            href="/frontend"
+            className="inline-flex items-center gap-2 rounded-full chip px-4 py-2 text-sm"
+          >
+            Frontend portfolio
+          </Link>
+        </div>
 
         <header className="mt-6">
           <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-muted-token">

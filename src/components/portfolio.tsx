@@ -197,7 +197,7 @@ export default function Portfolio({ latestPosts }: PortfolioProps): React.ReactE
         }}
       >
         <Section className="flex items-center justify-between py-4">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Avatar.Root className="size-9">
               <Avatar.Image
                 src="/og-image.png"
@@ -211,7 +211,7 @@ export default function Portfolio({ latestPosts }: PortfolioProps): React.ReactE
             <span className="font-semibold tracking-tight">
               Frimpong Opoku Agyemang
             </span>
-          </div>
+          </Link>
 
           <nav className="hidden sm:flex items-center gap-1">
             {navigationItems.map(({ label, id }) => (
@@ -225,6 +225,12 @@ export default function Portfolio({ latestPosts }: PortfolioProps): React.ReactE
             ))}
             <Link href="/blog" className="px-3 py-2 rounded-xl transition-colors hover:chip">
               Blog
+            </Link>
+            <Link
+              href="/ai-engineer"
+              className="px-3 py-2 rounded-xl transition-colors hover:chip"
+            >
+              AI Track
             </Link>
           </nav>
 
@@ -286,6 +292,15 @@ export default function Portfolio({ latestPosts }: PortfolioProps): React.ReactE
                 ))}
                 <Link href="/blog" className="px-3 py-2 rounded-xl text-left hover:chip">
                   Blog
+                </Link>
+                <Link
+                  href="/ai-engineer"
+                  className="px-3 py-2 rounded-xl text-left hover:chip"
+                >
+                  AI Track
+                </Link>
+                <Link href="/" className="px-3 py-2 rounded-xl text-left hover:chip">
+                  Career Tracks
                 </Link>
               </nav>
             </Section>
