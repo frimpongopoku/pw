@@ -1,13 +1,73 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Code2, Cpu, Mail, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  CalendarDays,
+  Code2,
+  Cpu,
+  GraduationCap,
+  Mail,
+  Sparkles,
+  Trophy,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Mr Frimpong | Career Tracks",
   description:
     "Choose between frontend engineering and AI engineering tracks from Frimpong Opoku Agyemang.",
 };
+
+const educationTimeline = [
+  {
+    school: "Saint Thomas Aquinas",
+    period: "2013 - 2016",
+    note: "Foundational secondary education.",
+  },
+  {
+    school: "African Leadership Academy",
+    period: "2016 - 2018",
+    note: "Received full-ride scholarship via Effrusy Family Foundation.",
+    courses: [
+      "A Levels",
+      "Writing & Rhetoric",
+      "African Studies",
+      "Entrepreneurial Leadership",
+    ],
+  },
+  {
+    school: "University of Rochester",
+    period: "July 2019 - August 2019",
+    note: "Short academic program experience.",
+  },
+  {
+    school: "African Leadership College",
+    period: "September 2019 - September 2023",
+    note: "Graduated with First Class Honours in Computing as a Mastercard Foundation Scholar on a full-ride scholarship.",
+    courses: [
+      "OOP",
+      "DSA",
+      "Web Development",
+      "Android Development",
+      "Database Development",
+      "Mathematics",
+    ],
+  },
+] as const;
+
+const scholarshipHighlights = [
+  {
+    foundation: "Effrusy Family Foundation",
+    detail:
+      "Full-ride scholarship support throughout African Leadership Academy.",
+  },
+  {
+    foundation: "Mastercard Foundation Scholar",
+    detail:
+      "Full-ride scholarship support throughout African Leadership College.",
+  },
+] as const;
 
 export default function HomePage() {
   return (
@@ -187,6 +247,160 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        <section className="mt-10 sm:mt-14 rounded-2xl sm:rounded-3xl glass p-5 sm:p-8">
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-2 rounded-full chip px-3 py-1 text-xs uppercase tracking-wide text-muted-token">
+              <GraduationCap className="size-3.5" />
+              Education Journey
+            </p>
+            <h2 className="mt-4 text-2xl sm:text-4xl font-bold tracking-tight text-fg-token">
+              Academic path with long-term scholarship support.
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-muted-token leading-relaxed">
+              From secondary school through university, this journey reflects structured growth,
+              full-ride support, and a strong finishing outcome.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+            <div className="lg:col-span-7 rounded-2xl border border-token bg-surface-token/45 p-4 sm:p-6">
+              <div className="relative space-y-4 sm:space-y-5">
+                <div
+                  aria-hidden
+                  className="absolute left-[9px] top-2 bottom-2 w-px"
+                  style={{ background: "color-mix(in oklab, var(--brand) 45%, var(--border) 55%)" }}
+                />
+                {educationTimeline.map((entry, index) => {
+                  const isFinal = index === educationTimeline.length - 1;
+                  return (
+                    <article key={entry.school} className="relative pl-8">
+                      <span
+                        aria-hidden
+                        className="absolute left-0 top-1.5 h-5 w-5 rounded-full border"
+                        style={{
+                          background: isFinal
+                            ? "var(--gradient-brand)"
+                            : "color-mix(in oklab, var(--surface) 80%, transparent)",
+                          borderColor: isFinal
+                            ? "color-mix(in oklab, var(--brand) 65%, var(--border) 35%)"
+                            : "var(--border)",
+                          boxShadow: isFinal
+                            ? "0 0 0 4px color-mix(in oklab, var(--brand) 18%, transparent)"
+                            : "none",
+                        }}
+                      />
+                      <div
+                        className="rounded-xl p-3 sm:p-4"
+                        style={{
+                          background: isFinal
+                            ? "linear-gradient(135deg, color-mix(in oklab, var(--brand) 16%, var(--surface) 84%), color-mix(in oklab, var(--brand-2) 12%, var(--surface) 88%))"
+                            : "color-mix(in oklab, var(--surface) 88%, transparent)",
+                          border: "1px solid var(--border)",
+                        }}
+                      >
+                        <p className="text-xs sm:text-sm font-semibold text-muted-token">
+                          {entry.period}
+                        </p>
+                        <h3 className="mt-1 text-base sm:text-lg font-semibold text-fg-token">
+                          {entry.school}
+                        </h3>
+                        <p className="mt-1.5 text-xs sm:text-sm text-muted-token leading-relaxed">
+                          {entry.note}
+                        </p>
+                        {"courses" in entry ? (
+                          <div className="mt-3">
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                              {entry.courses.map((course) => (
+                                <span
+                                  key={course}
+                                  className="rounded-full border border-token bg-surface-token/45 px-2.5 py-1 text-[11px] sm:text-xs text-muted-token/90"
+                                >
+                                  {course}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 space-y-4 sm:space-y-5">
+              <div
+                className="relative overflow-hidden rounded-2xl p-4 sm:p-5"
+                style={{
+                  background:
+                    "linear-gradient(165deg, color-mix(in oklab, var(--surface) 94%, white 6%), color-mix(in oklab, var(--surface) 98%, transparent))",
+                  border: "1px solid color-mix(in oklab, var(--brand) 20%, var(--border) 80%)",
+                  boxShadow: "var(--shadow-elev-1)",
+                }}
+              >
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 h-1"
+                  style={{ background: "var(--gradient-brand)" }}
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-10 -right-10 h-28 w-28 rounded-full opacity-35"
+                  style={{
+                    background:
+                      "radial-gradient(circle, color-mix(in oklab, var(--brand) 20%, transparent), transparent 70%)",
+                  }}
+                />
+                <p className="inline-flex items-center gap-2 rounded-full chip px-3 py-1 text-xs uppercase tracking-wide text-fg-token">
+                  <Award className="size-3.5" />
+                  Scholarships
+                </p>
+                <ul className="mt-4 space-y-3">
+                  {scholarshipHighlights.map((item) => (
+                    <li
+                      key={item.foundation}
+                      className="rounded-xl px-3 py-2.5 text-xs sm:text-sm leading-relaxed border-l-2"
+                      style={{
+                        background: "color-mix(in oklab, var(--surface) 90%, transparent)",
+                        borderColor: "color-mix(in oklab, var(--brand) 45%, var(--border) 55%)",
+                        color: "var(--muted-fg)",
+                      }}
+                    >
+                      <span className="font-semibold text-fg-token">{item.foundation}</span>{" "}
+                      <span>{item.detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
+                className="rounded-2xl p-5 sm:p-6"
+                style={{
+                  background:
+                    "linear-gradient(150deg, color-mix(in oklab, var(--brand) 24%, var(--surface) 76%), color-mix(in oklab, var(--brand-2) 28%, var(--surface) 72%))",
+                  border: "1px solid color-mix(in oklab, var(--brand) 45%, var(--border) 55%)",
+                  boxShadow: "var(--shadow-elev-2)",
+                }}
+              >
+                <p className="inline-flex items-center gap-2 rounded-full chip px-3 py-1 text-xs uppercase tracking-wide text-muted-token">
+                  <Trophy className="size-3.5" />
+                  Final Certification
+                </p>
+                <h3 className="mt-4 text-xl sm:text-2xl font-black tracking-tight text-fg-token">
+                  First Class Honours in Computing
+                </h3>
+                <p className="mt-2 text-sm sm:text-base text-fg-token/90 leading-relaxed">
+                  Completed Computing studies at African Leadership College with
+                  a certificate from Glasgow Caledonian University.
+                </p>
+                <div className="mt-4 chip rounded-xl px-3 py-2 text-xs sm:text-sm font-medium text-fg-token">
+                  Distinction outcome and strongest academic finish
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
   );
