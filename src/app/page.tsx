@@ -23,7 +23,7 @@ const educationTimeline = [
   {
     school: "Saint Thomas Aquinas",
     period: "2013 - 2016",
-    note: "Foundational secondary education.",
+    note: "Foundational secondary education (General Science)",
   },
   {
     school: "African Leadership Academy",
@@ -44,7 +44,7 @@ const educationTimeline = [
   {
     school: "African Leadership College",
     period: "September 2019 - September 2023",
-    note: "Graduated with First Class Honours in Computing as a Mastercard Foundation Scholar on a full-ride scholarship.",
+    note: "Graduated with First Class Honours in Computing as a Mastercard Foundation Scholar",
     courses: [
       "OOP",
       "DSA",
